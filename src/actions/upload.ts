@@ -170,7 +170,7 @@ export function getUpload(assetId: string) {
 }
 
 function pollUpload(uuid: string): Promise<UploadResponse> {
-  const maxTries = 10
+  const maxTries = 60
   let pollInterval: number
   let tries = 0
   let assetId: string
@@ -193,7 +193,7 @@ function pollUpload(uuid: string): Promise<UploadResponse> {
         reject(new Error('Upload did not finish'))
       }
       tries++
-    }, 2000)
+    }, 5000)
   })
 }
 
